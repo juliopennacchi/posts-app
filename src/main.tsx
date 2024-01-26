@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import AdminLayout from './layouts/AdminLayout';
-import PostsPage from './pages/user/PostsPage';
-import ConfigPage from './pages/admin/ConfigPage';
-import UserHomePage from './pages/user/HomePage';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import AdminLayout from "./layouts/AdminLayout";
+import PostsPage from "./pages/user/PostsPage";
+import ConfigPage from "./pages/admin/ConfigPage";
+import UserHomePage from "./pages/user/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -24,13 +24,13 @@ const router = createBrowserRouter([
     element: <UserHomePage />,
   },
   {
-    path: "/user/posts",
+    path: "/posts",
     element: <PostsPage />,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetUsersResponse, UserType } from "../types/UserTypes";
+import { UserType } from "../types/UserTypes";
 
 const baseAPIUrl = "https://jsonplaceholder.typicode.com/";
 

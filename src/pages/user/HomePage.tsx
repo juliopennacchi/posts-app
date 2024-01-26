@@ -6,8 +6,6 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Container,
-  Box,
   Grid,
 } from "@mui/material";
 import { getUsers } from "../../api/userService";
@@ -29,11 +27,8 @@ export default function UserHomePage() {
 
   return (
     <UserLayout>
-        <h1>User list</h1>
-      <Grid
-        container
-        spacing={0}
-      >
+      <h1>User list</h1>
+      <Grid container spacing={0}>
         <Grid item xs={12} sm={12} lg={12} xl={12}>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">

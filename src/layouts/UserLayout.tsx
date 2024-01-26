@@ -3,11 +3,11 @@ import { MenuItemType } from "../types/LayoutTypes";
 import { ReactNode } from "react";
 
 interface UserLayoutProps {
-  children? : ReactNode;
+  children?: ReactNode;
 }
 
 export default function UserLayout(props: UserLayoutProps) {
-  const {children} = props;
+  const { children } = props;
 
   const navItems: MenuItemType[] = [
     {
@@ -16,7 +16,7 @@ export default function UserLayout(props: UserLayoutProps) {
     },
     {
       title: "Posts",
-      path: "/user/posts",
+      path: "/posts",
     },
   ];
 

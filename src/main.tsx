@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AdminLayout from "./layouts/AdminLayout";
-import PostsPage from "./pages/user/PostsPage";
+import PostsPage from "./pages/user/posts/PostsPage";
 import ConfigPage from "./pages/admin/ConfigPage";
-import UserHomePage from "./pages/user/HomePage";
+import UserHomePage from "./pages/user/home-page/HomePage";
 
 const router = createBrowserRouter([
   {

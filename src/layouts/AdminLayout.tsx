@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@mui/material";
-import DrawerAppBar from "./DrawerAppBar";
+import DrawerAppBar from "./base/DrawerAppBar";
 import { MenuItemType } from "../types/LayoutTypes";
 import { ReactNode } from "react";
 import { darkTheme } from "../theme/theme";

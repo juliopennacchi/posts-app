@@ -18,7 +18,7 @@ import {
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { ReactNode, useState } from "react";
-import { MenuItemType } from "../types/LayoutTypes";
+import { MenuItemType } from "../../types/LayoutTypes";
 import { useNavigate } from "react-router-dom";
 import { AdminPanelSettings, SupervisedUserCircle } from "@mui/icons-material";
 
@@ -122,8 +122,8 @@ export default function DrawerAppBar(props: DrawerAppBarProps) {
         {children}
       </Box>
       <SpeedDial
-        ariaLabel="SpeedDial basic example"
-        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+        ariaLabel="SpeedDial"
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}
         icon={<SpeedDialIcon />}
       >
         {actions.map((action) => (
@@ -136,7 +136,6 @@ export default function DrawerAppBar(props: DrawerAppBarProps) {
           />
         ))}
       </SpeedDial>
-
     </Box>
   );
 }

@@ -1,36 +1,22 @@
-import {
-  TableContainer,
-  Paper,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Grid,
-} from "@mui/material";
-import { getUsers } from "../../api/userService";
-import UserLayout from "../../layouts/UserLayout";
-import { useEffect, useState } from "react";
-import { UserType } from "../../types/UserTypes";
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, IconButton } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { UserType } from "../../../../../types/UserTypes";
+import { useNavigate } from "react-router-dom";
 
-export default function UserHomePage() {
-  const [users, setUsers] = useState<UserType[]>();
+interface UserListProps {
+    users?: UserType[];
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getUsers();
-      if (response !== undefined) setUsers(response);
-    };
+export default function UserList(props : UserListProps) {
+    const { users } = props;
+    const navigate = useNavigate();
 
-    fetchData();
-  }, []);
+    const handlePostNavigation = (userId: string) => {
+        navigate(`/posts?userId=${encodeURI(userId)}`);
+    }
 
-  return (
-    <UserLayout>
-      <h1>User list</h1>
-      <Grid container spacing={0}>
-        <Grid item xs={12} sm={12} lg={12} xl={12}>
-          <TableContainer component={Paper}>
+    return (
+        <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
@@ -39,6 +25,7 @@ export default function UserHomePage() {
                   <TableCell align="right">User name</TableCell>
                   <TableCell align="right">Email</TableCell>
                   <TableCell align="right">Phone</TableCell>
+                  <TableCell align="right">Posts</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -55,13 +42,17 @@ export default function UserHomePage() {
                       <TableCell align="right">{user.username}</TableCell>
                       <TableCell align="right">{user.email}</TableCell>
                       <TableCell align="right">{user.phone}</TableCell>
+                      <TableCell align="right">
+                        <IconButton
+                          onClick={() => handlePostNavigation(user.id.toString())}
+                        >
+                          <ArrowForwardIcon />
+                        </IconButton>
+                      </TableCell>
                     </TableRow>
                   ))}
               </TableBody>
             </Table>
           </TableContainer>
-        </Grid>
-      </Grid>
-    </UserLayout>
-  );
+    );
 }

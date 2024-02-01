@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import UserLayout from "../../layouts/UserLayout";
-import { PostType } from "../../types/PostTypes";
-import { getPosts } from "../../api/postService";
+import UserLayout from "../../../layouts/UserLayout";
+import { PostType } from "../../../types/PostTypes";
+import { getPosts } from "../../../api/postService";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Grid,
@@ -14,18 +14,34 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState<PostType[]>();
+  let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getPosts();
-      if (response !== undefined) setPosts(response);
+      if (response !== undefined) {
+        const userIdFilter = getUserIdFromURL(searchParams);
+        if (userIdFilter != undefined) {
+          const postsFilteredByUserId = response.filter((post) => {
+            return post.userId.toString() == userIdFilter;
+          });
+          setPosts(postsFilteredByUserId);
+        } else {
+          setPosts(response);
+        }
+      }
     };
 
     fetchData();
   }, []);
+
+  const getUserIdFromURL = (searchUrlParams: URLSearchParams) => {
+    return searchUrlParams.get("userId");
+  };
 
   const handlePostDetails = (title: string) => {
     alert(title);

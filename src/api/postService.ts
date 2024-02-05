@@ -13,9 +13,8 @@ export const getPosts = async () => {
     return await axios
     .get<PostType[]>(baseAPIUrl + "/posts", requestConfig)
     .then((response) => {
-        console.log(JSON.stringify(response, null, 4));
-  
-        console.log("response status is: ", response.status);
+        // console.log(JSON.stringify(response, null, 4));
+        // console.log("response status is: ", response.status);
         return response.data;
       })
       .catch((error) => {

@@ -13,9 +13,6 @@ export const getUsers = async () => {
   return await axios
     .get<UserType[]>(baseAPIUrl + "/users", requestConfig)
     .then((response) => {
-      console.log(JSON.stringify(response, null, 4));
-
-      console.log("response status is: ", response.status);
       return response.data;
     })
     .catch((error) => {

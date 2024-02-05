@@ -16,6 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
+import LoginIcon from '@mui/icons-material/Login'; 
 import MenuIcon from "@mui/icons-material/Menu";
 import { ReactNode, useState } from "react";
 import { MenuItemType } from "../../types/LayoutTypes";
@@ -46,6 +47,7 @@ export default function DrawerAppBar(props: DrawerAppBarProps) {
   }
 
   const actions = [
+    { icon: <LoginIcon />, name: 'Login', path:"/login" },
     { icon: <AdminPanelSettings />, name: 'Admin', path:"/admin" },
     { icon: <SupervisedUserCircle />, name: 'User', path:"/user" },
   ];

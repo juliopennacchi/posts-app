@@ -11,8 +11,12 @@ export default function UserList(props : UserListProps) {
     const { users } = props;
     const navigate = useNavigate();
 
-    const handlePostNavigation = (userId: string) => {
-        navigate(`/posts?userId=${encodeURI(userId)}`);
+    const handlePostNavigation = (user: UserType) => {
+        navigate(`/posts?userId=${encodeURI(user.id.toString())}`, {
+          state: {
+            user: user
+          }
+        });
     }
 
     return (
@@ -44,7 +48,7 @@ export default function UserList(props : UserListProps) {
                       <TableCell align="right">{user.phone}</TableCell>
                       <TableCell align="right">
                         <IconButton
-                          onClick={() => handlePostNavigation(user.id.toString())}
+                          onClick={() => handlePostNavigation(user)}
                         >
                           <ArrowForwardIcon />
                         </IconButton>

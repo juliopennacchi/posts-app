@@ -27,7 +27,7 @@ export default function UserFilter(props: UserFilterProps) {
         onChange={handleFilter}
       >
         {users &&
-          users.map((user) => <MenuItem value={user.id}>{user.name}</MenuItem>)}
+          users.map((user) => <MenuItem key={user.id} value={user.id}>{user.name}</MenuItem>)}
       </Select>
     </FormControl>
   );
